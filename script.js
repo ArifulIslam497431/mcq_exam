@@ -5,7 +5,7 @@ document.getElementById('login-form').addEventListener('submit', (e) => {
     const password = document.getElementById('password').value;
 
     // Firebase login
-    auth.signInWithEmailAndPassword(studentId + '@example.com', password)
+    auth.signInWithEmailAndPassword(studentId + '@gmail.com', password)
         .then(() => {
             alert('Login successful!');
             window.location.href = 'exam.html'; // Redirect to exam page
