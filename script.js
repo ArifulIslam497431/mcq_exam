@@ -4,12 +4,14 @@ document.getElementById('login-form').addEventListener('submit', (e) => {
     const studentId = document.getElementById('student-id').value;
     const password = document.getElementById('password').value;
 
+    // Firebase login
     auth.signInWithEmailAndPassword(studentId + '@example.com', password)
         .then(() => {
-            window.location.href = 'exam.html';
+            alert('Login successful!');
+            window.location.href = 'exam.html'; // Redirect to exam page
         })
         .catch((error) => {
-            alert('Login failed: ' + error.message);
+            alert('Login failed: ' + error.message); // Show error message
         });
 });
 
