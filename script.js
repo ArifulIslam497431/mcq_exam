@@ -20,15 +20,17 @@ document.getElementById("login-form").addEventListener("submit", function (e) {
     const email = document.getElementById("student-id").value;
     const password = document.getElementById("password").value;
 
-    signInWithEmailAndPassword(window.auth, email, password)
-        .then((userCredential) => {
-            alert("Login successful!");
-            window.location.href = "exam.html"; // Redirect
-        })
-        .catch((error) => {
-            alert("Login failed: " + error.message);
-        });
-});
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        console.log("Login successful", userCredential);
+        alert("Login successful!");
+        window.location.href = "exam.html";
+    })
+    .catch((error) => {
+        console.error("Login failed:", error.code, error.message);
+        alert("Login failed: " + error.message);
+    });
+
 
 
 
