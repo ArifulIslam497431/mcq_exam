@@ -1,44 +1,42 @@
-// Wait until Firebase is fully loaded
-if (window.auth && window.db) {
-    console.log("Firebase initialized successfully.");
-} else {
-    console.error("Firebase not initialized. Check firebase-config.js.");
-}
+// script.js
+import { db, auth, analytics } from "./firebase-config.js";
+import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+import { doc, setDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+import { logEvent } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-analytics.js";
 
-// Example of using auth and db:
+// Login Form Submission
+const loginForm = document.getElementById("login-form");
+const loginError = document.getElementById("login-error");
+const loginLoading = document.getElementById("login-loading");
 
+if (loginForm) {
+    loginForm.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-import { db, auth } from "./firebase-config.js";  
-console.log(db, auth); // Debug: Ensure Firebase is properly imported
+        const email = document.getElementById("student-id").value;
+        const password = document.getElementById("password").value;
 
-import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
-import { doc, setDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+        loginError.textContent = ""; // Clear previous errors
+        loginLoading.classList.add("show"); // Show loading indicator
 
-document.getElementById("login-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    
-    const email = document.getElementById("student-id").value;
-    const password = document.getElementById("password").value;
-
-    signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        console.log("Login successful", userCredential);
-        alert("Login successful!");
-        window.location.href = "exam.html";
-    })
-    .catch((error) => {
-        console.error("Login failed:", error.code, error.message);
-        alert("Login failed: " + error.message);
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                console.log("Login successful", userCredential);
+                loginLoading.classList.remove("show"); // Hide loading indicator
+                logEvent(analytics, 'login', { method: 'email/password' });
+                window.location.href = "exam.html";
+            })
+            .catch((error) => {
+                console.error("Login failed:", error.code, error.message);
+                loginLoading.classList.remove("show"); // Hide loading indicator
+                loginError.textContent = "Login failed: " + error.message;
+            });
     });
-
-
-
-
-
+}
 
 // **Timer (Set for 25 minutes)**
 if (document.getElementById("timer")) {
-    let timeLeft = 1500; 
+    let timeLeft = 1500;
     const timer = setInterval(() => {
         timeLeft--;
         document.getElementById("timer").innerText = `সময় বাকি: ${Math.floor(timeLeft / 60)} মিনিট ${timeLeft % 60} সেকেন্ড`;
@@ -50,17 +48,20 @@ if (document.getElementById("timer")) {
 }
 
 // **Submit Exam Function**
-document.getElementById("exam-form")?.addEventListener("submit", function (e) {
-    e.preventDefault();
-    submitExam();
-});
+const examForm = document.getElementById("exam-form");
+if (examForm) {
+    examForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        submitExam();
+    });
+}
 
 function calculateMarks() {
     let totalMarks = 0;
     const answers = document.querySelectorAll('input[type="radio"]:checked');
 
     answers.forEach((answer) => {
-        totalMarks += parseInt(answer.value);  
+        totalMarks += parseInt(answer.value);
     });
 
     return totalMarks;
@@ -77,6 +78,7 @@ function submitExam() {
     setDoc(doc(db, "students", user.uid), { marks })
         .then(() => {
             alert("Exam submitted!");
+            logEvent(analytics, 'exam_submitted', { marks: marks });
             window.location.href = "index.html";
         })
         .catch((error) => {
