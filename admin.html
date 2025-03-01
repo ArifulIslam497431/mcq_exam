@@ -1,24 +1,23 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Student Marks</h1>
-        <table id="marks-table">
+    <h1>Admin Page</h1>
+    <table id="marks-table">
+        <thead>
             <tr>
                 <th>Student ID</th>
                 <th>Marks</th>
             </tr>
-        </table>
-    </div>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
-    <script src="firebase-config.js"></script>
-    <script src="script.js"></script>
+        </thead>
+        <tbody>
+            <!-- Marks will be displayed here -->
+        </tbody>
+    </table>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
