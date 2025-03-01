@@ -1,4 +1,4 @@
-// script.js
+// Import Firebase modules
 import { db, auth, analytics } from "./firebase-config.js";
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 import { doc, setDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
@@ -39,7 +39,9 @@ if (document.getElementById("timer")) {
     let timeLeft = 1500; // 25 minutes in seconds
     const timer = setInterval(() => {
         timeLeft--;
-        document.getElementById("timer").innerText = `সময় বাকি: ${Math.floor(timeLeft / 60)} মিনিট ${timeLeft % 60} সেকেন্ড`;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        document.getElementById("time").textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
         if (timeLeft <= 0) {
             clearInterval(timer);
             submitExam();
@@ -58,11 +60,7 @@ if (examForm) {
 
 // Define the correct answers
 const correctAnswers = {
-    q1: "A", q2: "C", q3: "B", q4: "A", q5: "D",
-    q6: "C", q7: "B", q8: "A", q9: "C", q10: "D",
-    q11: "B", q12: "B", q13: "A", q14: "D", q15: "A",
-    q16: "A", q17: "A", q18: "B", q19: "D", q20: "C",
-    q21: "C", q22: "A", q23: "A", q24: "A", q25: "B"
+    q1: "A", q2: "C", q3: "B", q4: "A", q5: "B"
 };
 
 function calculateMarks() {
@@ -75,12 +73,6 @@ function calculateMarks() {
         studentAnswers[answer.name] = answer.value;
     });
 
-    // Ensure we handle cases where no answers are selected
-    if (Object.keys(studentAnswers).length === 0) {
-        console.warn("No answers selected. Returning 0 marks.");
-        return 0; // Return 0 instead of NaN
-    }
-
     // Compare student's answers with correct answers
     for (const question in correctAnswers) {
         if (studentAnswers[question] === correctAnswers[question]) {
@@ -88,7 +80,6 @@ function calculateMarks() {
         }
     }
 
-    console.log("Total Marks Calculated:", totalMarks);
     return totalMarks;
 }
 
@@ -117,7 +108,7 @@ function submitExam() {
 
             // Display marks to the student
             if (marksDisplay) {
-                marksDisplay.textContent = `Your Marks: ${marks}/25`;
+                marksDisplay.textContent = `আপনার নম্বর: ${marks}/5`;
             }
 
             // Hide the exam form
