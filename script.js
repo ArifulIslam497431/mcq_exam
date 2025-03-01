@@ -56,13 +56,49 @@ if (examForm) {
     });
 }
 
+// Define the correct answers
+const correctAnswers = {
+    q1: "A"  
+    q2: "C"  
+    q3: "B"  
+    q4: "A"  
+    q5: "D"  
+    q6: "C"  
+    q7: "B"  
+    q8: "A"  
+    q9: "C"  
+    q10: "D"  
+    q11: "B"  
+    q12: "B"  
+    q13: "A"  
+    q14: "D"  
+    q15: "A"  
+    q16: "A"  
+    q17: "A"  
+    q18: "B"  
+    q19: "D"  
+    q20: "C"  
+    q21: "C"  
+    q22: "A"  
+    q23: "A"  
+    q24: "A"  
+    q25: "B"  
+};
+
 function calculateMarks() {
     let totalMarks = 0;
     const answers = document.querySelectorAll('input[type="radio"]:checked');
+    const studentAnswers = {};
 
     answers.forEach((answer) => {
-        totalMarks += parseInt(answer.value);
+        studentAnswers[answer.name] = answer.value;
     });
+
+    for (const question in correctAnswers) {
+        if (studentAnswers[question] === correctAnswers[question]) {
+            totalMarks++;
+        }
+    }
 
     return totalMarks;
 }
@@ -81,7 +117,7 @@ function submitExam() {
             logEvent(analytics, 'exam_submitted', { marks: marks });
             // Display marks to the student
             if (marksDisplay) {
-                marksDisplay.textContent = `Your Marks: ${marks}`;
+                marksDisplay.textContent = `Your Marks: ${marks}/3`;
             }
             // Hide the exam form
             if (examForm) {
