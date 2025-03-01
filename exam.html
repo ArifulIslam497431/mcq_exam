@@ -1,17 +1,194 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exam</title>
-</head>
-<body>
-    <h1>Exam Page</h1>
-    <div id="timer"></div>
-    <form id="exam-form">
-        <!-- Your exam questions and answers here -->
-        <button type="submit">Submit Exam</button>
-    </form>
-    <script type="module" src="script.js"></script>
-</body>
-</html>
+<!DOCTYPE html>  
+<html lang="bn">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>পরীক্ষা</title>  
+</head>  
+<body>  
+    <h1>পরীক্ষার পৃষ্ঠা</h1>  
+    <div id="timer">সময়: <span id="time">00:00</span></div>  
+    <form id="exam-form">  
+        <ol>  
+            <li>  
+                <p>১. পদার্থবিজ্ঞানে নিউটনের প্রথম সূত্র কী?</p>  
+                <label><input type="radio" name="q1" value="A"> A) একটি বস্তুর গতির পরিবর্তন তার উপর প্রয়োগিত বাহনের সমানুপাতিক।</label><br>  
+                <label><input type="radio" name="q1" value="B"> B) একটি বস্তুর অবস্থান পরিবর্তন না হলে, তার গতিও পরিবর্তন হয় না। </label><br>  
+                <label><input type="radio" name="q1" value="C"> C) একটি বস্তুর উপর বাহিনী প্রয়োগ করলে তার গতির পরিবর্তন হয়। </label><br>  
+                <label><input type="radio" name="q1" value="D"> D) পদার্থের অভ্যন্তরীণ শক্তি। </label>  
+            </li>  
+            <li>  
+                <p>২. একটি বস্তু যখন সমতল পথে চলে, তখন তার গতি কি ধরনের?</p>  
+                <label><input type="radio" name="q2" value="A"> A) স্থির</label><br>  
+                <label><input type="radio" name="q2" value="B"> B) সমান</label><br>  
+                <label><input type="radio" name="q2" value="C"> C) ত্বরণশীল</label><br>  
+                <label><input type="radio" name="q2" value="D"> D) অভিকর্ষিত</label>  
+            </li>  
+            <li>  
+                <p>৩. আলো একটি মাধ্যমের মধ্যে দিয়ে যায়, তখন তার গতি কি হয়?</p>  
+                <label><input type="radio" name="q3" value="A"> A) বাড়ে</label><br>  
+                <label><input type="radio" name="q3" value="B"> B) কমে</label><br>  
+                <label><input type="radio" name="q3" value="C"> C) অপরিবর্তিত থাকে</label><br>  
+                <label><input type="radio" name="q3" value="D"> D) বিপরীত দিকে চলে যায়</label>  
+            </li>  
+            <li>  
+                <p>৪. শক্তির সংরক্ষণ আইন কি নির্দেশ করে?</p>  
+                <label><input type="radio" name="q4" value="A"> A) শক্তি কখনও তৈরি হয় না বা ধ্বংস হয় না।</label><br>  
+                <label><input type="radio" name="q4" value="B"> B) শক্তি সবসময় ধ্বংস হয়।</label><br>  
+                <label><input type="radio" name="q4" value="C"> C) শক্তি সবসময় বৃদ্ধি পায়।</label><br>  
+                <label><input type="radio" name="q4" value="D"> D) শক্তি স্থানান্তরিত হয়।</label>  
+            </li>  
+            <li>  
+                <p>৫. বিদ্যুৎ প্রবাহের একক কি?</p>  
+                <label><input type="radio" name="q5" value="A"> A) ভোল্ট</label><br>  
+                <label><input type="radio" name="q5" value="B"> B) অ্যাম্পিয়ার</label><br>  
+                <label><input type="radio" name="q5" value="C"> C) ওহম</label><br>  
+                <label><input type="radio" name="q5" value="D"> D) জুল</label>  
+            </li>  
+            <li>  
+                <p>৬. একটি বস্তু যখন মুক্ত পতন করে, তখন তার ত্বরণ কি হয়?</p>  
+                <label><input type="radio" name="q6" value="A"> A) শূন্য</label><br>  
+                <label><input type="radio" name="q6" value="B"> B) 9.8 m/s²</label><br>  
+                <label><input type="radio" name="q6" value="C"> C) 10 m/s²</label><br>  
+                <label><input type="radio" name="q6" value="D"> D) 5 m/s²</label>  
+            </li>  
+            <li>  
+                <p>৭. একটি বস্তু যখন ঘূর্ণায়মান হয়, তখন তার কোন শক্তি কাজ করে?</p>  
+                <label><input type="radio" name="q7" value="A"> A) গতিশক্তি</label><br>  
+                <label><input type="radio" name="q7" value="B"> B) পোটেনশিয়াল শক্তি</label><br>  
+                <label><input type="radio" name="q7" value="C"> C) ঘূর্ণন শক্তি</label><br>  
+                <label><input type="radio" name="q7" value="D"> D) তাপ শক্তি</label>  
+            </li>  
+            <li>  
+                <p>৮. একটি লেন্সের মাধ্যমে আলোর প্রতিফলন ঘটে, এটি কোন ধরনের লেন্স?</p>  
+                <label><input type="radio" name="q8" value="A"> A) সমাবর্তী লেন্স</label><br>  
+                <label><input type="radio" name="q8" value="B"> B) বিচ্ছিন্ন লেন্স</label><br>  
+                <label><input type="radio" name="q8" value="C"> C) প্লেন লেন্স</label><br>  
+                <label><input type="radio" name="q8" value="D"> D) কনভেক্স লেন্স</label>  
+            </li>  
+            <li>  
+                <p>৯. একটি বস্তু যদি 10 m/s² ত্বরণ পায়, তবে তার গতির পরিবর্তন কিভাবে হবে?</p>  
+                <label><input type="radio" name="q9" value="A"> A) সর্বদা বৃদ্ধি পাবে</label><br>  
+                <label><input type="radio" name="q9" value="B"> B) সর্বদা হ্রাস পাবে</label><br>  
+                <label><input type="radio" name="q9" value="C"> C) কখনও বৃদ্ধি পাবে, কখনও হ্রাস পাবে</label><br>  
+                <label><input type="radio" name="q9" value="D"> D) স্থির থাকবে</label>  
+            </li>  
+            <li>  
+                <p>১০. তাপ শক্তি কোন প্রক্রিয়ায় স্থানান্তরিত হয়?</p>  
+                <label><input type="radio" name="q10" value="A"> A) কনডাকশন</label><br>  
+                <label><input type="radio" name="q10" value="B"> B) কনভেকশন</label><br>  
+                <label><input type="radio" name="q10" value="C"> C) রেডিয়েশন</label><br>  
+                <label><input type="radio" name="q10" value="D"> D) সবগুলি</label>  
+            </li>  
+            <li>  
+                <p>১১. একটি বস্তু যখন একটি সুতার মাধ্যমে ঝুলানো হয়, তখন এটি কি ধরনের শক্তি ধারণ করে?</p>  
+                <label><input type="radio" name="q11" value="A"> A) গতিশক্তি</label><br>  
+                <label><input type="radio" name="q11" value="B"> B) পোটেনশিয়াল শক্তি</label><br>  
+                <label><input type="radio" name="q11" value="C"> C) তাপ শক্তি</label><br>  
+                <label><input type="radio" name="q11" value="D"> D) বৈদ্যুতিক শক্তি</label>  
+            </li>  
+            <li>  
+                <p>১২. একটি বস্তু যখন একটি স্থির পৃষ্ঠে ঘর্ষণ সৃষ্টি করে, তখন কি ধরনের শক্তি তৈরি হয়?</p>  
+                <label><input type="radio" name="q12" value="A"> A) গতিশক্তি</label><br>  
+                <label><input type="radio" name="q12" value="B"> B) তাপ শক্তি</label><br>  
+                <label><input type="radio" name="q12" value="C"> C) কাইনেটিক শক্তি</label><br>  
+                <label><input type="radio" name="q12" value="D"> D) পোটেনশিয়াল শক্তি</label>  
+            </li>  
+            <li>  
+                <p>১৩. একটি বস্তু যখন দ্রুত ঘোরে, তখন তার কোন শক্তি বাড়ে?</p>  
+                <label><input type="radio" name="q13" value="A"> A) গতিশক্তি</label><br>  
+                <label><input type="radio" name="q13" value="B"> B) পোটেনশিয়াল শক্তি</label><br>  
+                <label><input type="radio" name="q13" value="C"> C) তাপ শক্তি</label><br>  
+                <label><input type="radio" name="q13" value="D"> D) বৈদ্যুতিক শক্তি</label>  
+            </li>  
+            <li>  
+                <p>১৪. একটি লেন্সের মাধ্যমে আলোর প্রতিফলন ঘটে, এটি কোন ধরনের লেন্স?</p>  
+                <label><input type="radio" name="q14" value="A"> A) সমাবর্তী লেন্স</label><br>  
+                <label><input type="radio" name="q14" value="B"> B) বিচ্ছিন্ন লেন্স</label><br>  
+                <label><input type="radio" name="q14" value="C"> C) প্লেন লেন্স</label><br>  
+                <label><input type="radio" name="q14" value="D"> D) কনভেক্স লেন্স</label>  
+            </li>  
+            <li>  
+                <p>১৫. একটি বস্তুর ভর ও তার ত্বরণ কিভাবে সম্পর্কিত?</p>  
+                <label><input type="radio" name="q15" value="A"> A) সরাসরি সমানুপাতিক</label><br>  
+                <label><input type="radio" name="q15" value="B"> B) বিপরীত সমানুপাতিক</label><br>  
+                <label><input type="radio" name="q15" value="C"> C) অপরিবর্তিত</label><br>  
+                <label><input type="radio" name="q15" value="D"> D) কোন সম্পর্ক নেই</label>  
+            </li>  
+            <li>  
+                <p>১৬. একটি পদার্থের তাপমাত্রা বাড়ানোর ফলে কি হয়?</p>  
+                <label><input type="radio" name="q16" value="A"> A) ভলিউম বাড়ে</label><br>  
+                <label><input type="radio" name="q16" value="B"> B) ভলিউম কমে</label><br>  
+                <label><input type="radio" name="q16" value="C"> C) ভলিউম অপরিবর্তিত থাকে</label><br>  
+                <label><input type="radio" name="q16" value="D"> D) ভলিউম বাড়ে এবং কমে</label>  
+            </li>  
+            <li>  
+                <p>১৭. একটি বস্তু যদি স্থির থাকে, তবে তার গতির মান কি?</p>  
+                <label><input type="radio" name="q17" value="A"> A) 0</label><br>  
+                <label><input type="radio" name="q17" value="B"> B) 5 m/s</label><br>  
+                <label><input type="radio" name="q17" value="C"> C) 10 m/s</label><br>  
+                <label><input type="radio" name="q17" value="D"> D) অজানা</label>  
+            </li>  
+            <li>  
+                <p>১৮. একটি বস্তু যখন একটি সুতার মাধ্যমে ঝুলানো হয়, তখন এটি কি ধরনের শক্তি ধারণ করে?</p>  
+               
+                <label><input type="radio" name="q18" value="A"> A) গতিশক্তি</label><br>  
+                <label><input type="radio" name="q18" value="B"> B) পোটেনশিয়াল শক্তি</label><br>  
+                <label><input type="radio" name="q18" value="C"> C) তাপ শক্তি</label><br>  
+                <label><input type="radio" name="q18" value="D"> D) বৈদ্যুতিক শক্তি</label>  
+            </li>  
+            <li>  
+                <p>১৯. আলোর দ্রুততা কিসে নির্ধারিত হয়?</p>  
+                <label><input type="radio" name="q19" value="A"> A) পদার্থের ঘনত্ব</label><br>  
+                <label><input type="radio" name="q19" value="B"> B) মাধ্যমের তাপমাত্রা</label><br>  
+                <label><input type="radio" name="q19" value="C"> C) মাধ্যমের স্বাভাবিক বৈশিষ্ট্য</label><br>  
+                <label><input type="radio" name="q19" value="D"> D) উপরে উল্লেখিত সবগুলি</label>  
+            </li>  
+            <li>  
+                <p>২০. নানাবিধ তাপ পরিবাহিতার মধ্যে কোনটি বেশি কার্যকরী?</p>  
+                <label><input type="radio" name="q20" value="A"> A) গ্যাস</label><br>  
+                <label><input type="radio" name="q20" value="B"> B) তরল</label><br>  
+                <label><input type="radio" name="q20" value="C"> C) কঠিন</label><br>  
+                <label><input type="radio" name="q20" value="D"> D) তাদের মধ্যে কোনটি নয়</label>  
+            </li>  
+            <li>  
+                <p>২১. শব্দের গতি সবচেয়ে বেশি কোথায়?</p>  
+                <label><input type="radio" name="q21" value="A"> A) গ্যাসে</label><br>  
+                <label><input type="radio" name="q21" value="B"> B) তরলে</label><br>  
+                <label><input type="radio" name="q21" value="C"> C) কঠিন পদার্থে</label><br>  
+                <label><input type="radio" name="q21" value="D"> D) শূন্যে</label>  
+            </li>  
+            <li>  
+                <p>২২. বৈদ্যুতিক ক্ষেত্রের একক কি?</p>  
+                <label><input type="radio" name="q22" value="A"> A) ভোল্ট/मीटर</label><br>  
+                <label><input type="radio" name="q22" value="B"> B) অ্যাম্পেয়ার</label><br>  
+                <label><input type="radio" name="q22" value="C"> C) ওহম</label><br>  
+                <label><input type="radio" name="q22" value="D"> D) জুল</label>  
+            </li>  
+            <li>  
+                <p>২৩. একটি শক্তির বার্তা মধ্যে প্রেরণিত হয়, তখন সেটা কি বলা হয়?</p>  
+                <label><input type="radio" name="q23" value="A"> A) তরঙ্গ</label><br>  
+                <label><input type="radio" name="q23" value="B"> B) ভরের পরিবর্তন</label><br>  
+                <label><input type="radio" name="q23" value="C"> C) তরল</label><br>  
+                <label><input type="radio" name="q23" value="D"> D) গ্যাস </label>  
+            </li>  
+            <li>  
+                <p>২৪. পদার্থের মৌলিক একক কি?</p>  
+                <label><input type="radio" name="q24" value="A"> A) অ্যাটম</label><br>  
+                <label><input type="radio" name="q24" value="B"> B) মল</label><br>  
+                <label><input type="radio" name="q24" value="C"> C) পারমাণবিক</label><br>  
+                <label><input type="radio" name="q24" value="D"> D) নিউট্রন</label>  
+            </li>  
+            <li>  
+                <p>২৫. একটি বিশাল ভর সরাসরি গ্রাভিটেশনাল প্রভাব ফেললে তাকে কি বলা হয়?</p>  
+                <label><input type="radio" name="q25" value="A"> A) টান</label><br>  
+                <label><input type="radio" name="q25" value="B"> B) মহাকর্ষীয়</label><br>  
+                <label><input type="radio" name="q25" value="C"> C) চাপ</label><br>  
+                <label><input type="radio" name="q25" value="D"> D) বেগ</label>  
+            </li>  
+        </ol>  
+        <button type="submit">পরীক্ষা জমা দিন</button>  
+    </form>  
+    <script type="module" src="script.js"></script>  
+</body>  
+</html>  
