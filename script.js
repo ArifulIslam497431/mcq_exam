@@ -22,13 +22,13 @@ if (loginForm) {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 console.log("Login successful", userCredential);
-                loginLoading.classList.remove("show"); // Hide loading indicator
+                loginLoading.classList.remove("show");
                 logEvent(analytics, 'login', { method: 'email/password' });
                 window.location.href = "exam.html";
             })
             .catch((error) => {
                 console.error("Login failed:", error.code, error.message);
-                loginLoading.classList.remove("show"); // Hide loading indicator
+                loginLoading.classList.remove("show");
                 loginError.textContent = "Login failed: " + error.message;
             });
     });
@@ -58,31 +58,11 @@ if (examForm) {
 
 // Define the correct answers
 const correctAnswers = {
-    q1: "A",
-    q2: "C",
-    q3: "B",
-    q4: "A",
-    q5: "D",
-    q6: "C",
-    q7: "B",
-    q8: "A",
-    q9: "C",
-    q10: "D",
-    q11: "B",
-    q12: "B",
-    q13: "A",
-    q14: "D",
-    q15: "A",
-    q16: "A",
-    q17: "A",
-    q18: "B",
-    q19: "D",
-    q20: "C",
-    q21: "C",
-    q22: "A",
-    q23: "A",
-    q24: "A",
-    q25: "B"
+    q1: "A", q2: "C", q3: "B", q4: "A", q5: "D",
+    q6: "C", q7: "B", q8: "A", q9: "C", q10: "D",
+    q11: "B", q12: "B", q13: "A", q14: "D", q15: "A",
+    q16: "A", q17: "A", q18: "B", q19: "D", q20: "C",
+    q21: "C", q22: "A", q23: "A", q24: "A", q25: "B"
 };
 
 function calculateMarks() {
@@ -95,6 +75,12 @@ function calculateMarks() {
         studentAnswers[answer.name] = answer.value;
     });
 
+    // Ensure we handle cases where no answers are selected
+    if (Object.keys(studentAnswers).length === 0) {
+        console.warn("No answers selected. Returning 0 marks.");
+        return 0; // Return 0 instead of NaN
+    }
+
     // Compare student's answers with correct answers
     for (const question in correctAnswers) {
         if (studentAnswers[question] === correctAnswers[question]) {
@@ -102,7 +88,7 @@ function calculateMarks() {
         }
     }
 
-    console.log("Total Marks Calculated:", totalMarks); // Debugging
+    console.log("Total Marks Calculated:", totalMarks);
     return totalMarks;
 }
 
@@ -118,7 +104,7 @@ function submitExam() {
 
     // Ensure marks is a valid number
     if (typeof marks !== 'number' || isNaN(marks)) {
-        console.error("Invalid marks value:", marks); // Debugging
+        console.error("Invalid marks value:", marks);
         alert("Error calculating marks. Please try again.");
         return;
     }
@@ -126,7 +112,7 @@ function submitExam() {
     // Save marks to Firestore
     setDoc(doc(db, "students", user.uid), { marks })
         .then(() => {
-            console.log("Marks saved to Firestore:", marks); // Debugging
+            console.log("Marks saved to Firestore:", marks);
             logEvent(analytics, 'exam_submitted', { marks: marks });
 
             // Display marks to the student
@@ -140,7 +126,7 @@ function submitExam() {
             }
         })
         .catch((error) => {
-            console.error("Error submitting exam:", error); // Debugging
+            console.error("Error submitting exam:", error);
             alert("Error submitting exam: " + error.message);
         });
 }
@@ -169,6 +155,6 @@ if (marksTable) {
             });
         })
         .catch((error) => {
-            console.error("Error fetching marks:", error); // Debugging
+            console.error("Error fetching marks:", error);
         });
 }
