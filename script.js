@@ -75,11 +75,18 @@ function submitExam() {
     }
 
     const marks = calculateMarks();
+    const marksDisplay = document.getElementById("marks-display"); // Get the marks display element
     setDoc(doc(db, "students", user.uid), { marks })
         .then(() => {
-            alert("Exam submitted!");
             logEvent(analytics, 'exam_submitted', { marks: marks });
-            window.location.href = "index.html";
+            // Display marks to the student
+            if (marksDisplay) {
+                marksDisplay.textContent = `Your Marks: ${marks}`;
+            }
+            // Hide the exam form
+            if (examForm) {
+                examForm.style.display = "none";
+            }
         })
         .catch((error) => {
             alert("Error submitting exam: " + error.message);
