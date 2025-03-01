@@ -1,6 +1,7 @@
+/* General Reset */
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    background: linear-gradient(135deg, #667eea, #764ba2);
     margin: 0;
     padding: 0;
     display: flex;
@@ -8,73 +9,108 @@ body {
     align-items: center;
     height: 100vh;
     color: #333;
+    overflow: hidden;
 }
 
+/* Glassmorphism Container */
 .container {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     width: 350px;
     text-align: center;
-    animation: fadeIn 0.5s ease-in-out;
+    animation: fadeIn 0.8s ease-in-out, float 4s infinite ease-in-out;
 }
 
+/* Floating Animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Heading Styling */
 h1 {
     margin-bottom: 20px;
-    font-size: 2em;
-    color: #2575fc;
+    font-size: 2.5em;
+    color: white;
+    font-weight: 600;
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Form Styling */
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
 
+/* Input Fields */
 input {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
     font-size: 1em;
-    transition: border-color 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
 }
 
 input:focus {
-    border-color: #2575fc;
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
     outline: none;
 }
 
+/* Button Styling */
 button {
-    background-color: #2575fc;
+    background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
     padding: 12px;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 1em;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 button:hover {
-    background-color: #1a5bbf;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+button:active {
+    transform: translateY(0);
+}
+
+/* Error Message Styling */
 .error-message {
-    color: #ff4d4d;
+    color: #ff6b6b;
     font-size: 0.9em;
     margin-top: 10px;
     display: none;
 }
 
+/* Loading Indicator Styling */
 .loading-indicator {
-    color: #2575fc;
+    color: white;
     font-size: 0.9em;
     margin-top: 10px;
     display: none;
 }
 
+/* Fade-In Animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -83,5 +119,27 @@ button:hover {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Background Animation */
+body::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
+    animation: rotate 20s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
     }
 }
