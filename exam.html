@@ -1,10 +1,18 @@
 <!DOCTYPE html>  
 <html lang="bn">  
-<head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>পরীক্ষা</title>  
-</head>  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>পরীক্ষা</title> 
+    <style>
+        #marks-display {
+            font-size: 24px;
+            font-weight: bold;
+            color: green;
+            margin-top: 20px;
+        }
+    </style>
+</head>    
 <body>  
     <h1>পরীক্ষার পৃষ্ঠা</h1>  
     <div id="timer">সময়: <span id="time">00:00</span></div>  
@@ -187,8 +195,10 @@
                 <label><input type="radio" name="q25" value="D"> D) বেগ</label>  
             </li>  
         </ol>  
-        <button type="submit">পরীক্ষা জমা দিন</button>  
-    </form>  
-    <script type="module" src="script.js"></script>  
-</body>  
-</html>  
+        <button type="submit">পরীক্ষা জমা দিন</button> 
+    </form>   
+    <div id="marks-display"></div>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
+
