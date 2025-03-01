@@ -1,23 +1,20 @@
-
-import { db } from "./firebase-config.js";  
-console.log(db); // Ensure it's defined
+import { db, auth } from "./firebase-config.js";  
+console.log(db, auth); // Ensure they are properly imported
 
 import { signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 import { doc, setDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
-
-
 // **Login Function**
-document.getElementById("login-form").addEventListener("submit", function (e) {
+document.getElementById("login-form")?.addEventListener("submit", function (e) {
     e.preventDefault();
     
-    const email = document.getElementById("student-id").value;  // Use actual email
+    const email = document.getElementById("student-id").value;  
     const password = document.getElementById("password").value;
 
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             alert("Login successful!");
-            window.location.href = "exam.html"; // Redirect to exam page
+            window.location.href = "exam.html";
         })
         .catch((error) => {
             alert("Login failed: " + error.message);
@@ -25,7 +22,7 @@ document.getElementById("login-form").addEventListener("submit", function (e) {
 });
 
 // **Timer (Set for 25 minutes)**
-let timeLeft = 1500; // 25 minutes in seconds
+let timeLeft = 1500; 
 const timerElement = document.getElementById("timer");
 
 if (timerElement) {
@@ -40,10 +37,16 @@ if (timerElement) {
 }
 
 // **Submit Exam Function**
-document.getElementById("exam-form").addEventListener("submit", function (e) {
+document.getElementById("exam-form")?.addEventListener("submit", function (e) {
     e.preventDefault();
     submitExam();
 });
+
+function calculateMarks() {
+    let totalMarks = 0;
+    // TODO: Logic to calculate exam marks
+    return totalMarks;
+}
 
 function submitExam() {
     const user = auth.currentUser;
@@ -52,7 +55,7 @@ function submitExam() {
         return;
     }
 
-    const marks = calculateMarks(); // Implement this function
+    const marks = calculateMarks();
     setDoc(doc(db, "students", user.uid), { marks })
         .then(() => {
             alert("Exam submitted!");
