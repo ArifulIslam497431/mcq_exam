@@ -1,43 +1,80 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Background Styling */
+body {
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
+/* Centered Login Container */
 .container {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 320px;
+    text-align: center;
+    color: white;
+}
+
+/* Input Fields */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
     text-align: center;
 }
 
-input, button {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+/* Placeholder Styling */
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
 }
 
+/* Modern Buttons */
 button {
-    background-color: #28a745;
-    color: white;
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
     border: none;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 16px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 button:hover {
-    background-color: #218838;
+    background: rgba(255, 255, 255, 0.5);
 }
 
+/* Timer Style */
 #timer {
-    font-size: 1.5em;
-    margin-bottom: 20px;
+    font-size: 1.8em;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 400px) {
+    .container {
+        width: 90%;
+    }
 }
