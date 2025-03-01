@@ -58,31 +58,31 @@ if (examForm) {
 
 // Define the correct answers
 const correctAnswers = {
-    q1: "A"  
-    q2: "C"  
-    q3: "B"  
-    q4: "A"  
-    q5: "D"  
-    q6: "C"  
-    q7: "B"  
-    q8: "A"  
-    q9: "C"  
-    q10: "D"  
-    q11: "B"  
-    q12: "B"  
-    q13: "A"  
-    q14: "D"  
-    q15: "A"  
-    q16: "A"  
-    q17: "A"  
-    q18: "B"  
-    q19: "D"  
-    q20: "C"  
-    q21: "C"  
-    q22: "A"  
-    q23: "A"  
-    q24: "A"  
-    q25: "B"  
+    q1: "A",
+    q2: "C",
+    q3: "B",
+    q4: "A",
+    q5: "D",
+    q6: "C",
+    q7: "B",
+    q8: "A",
+    q9: "C",
+    q10: "D",
+    q11: "B",
+    q12: "B",
+    q13: "A",
+    q14: "D",
+    q15: "A",
+    q16: "A",
+    q17: "A",
+    q18: "B",
+    q19: "D",
+    q20: "C",
+    q21: "C",
+    q22: "A",
+    q23: "A",
+    q24: "A",
+    q25: "B"
 };
 
 function calculateMarks() {
@@ -112,12 +112,19 @@ function submitExam() {
 
     const marks = calculateMarks();
     const marksDisplay = document.getElementById("marks-display"); // Get the marks display element
+
+    // Ensure marks is a valid number
+    if (typeof marks !== 'number' || isNaN(marks)) {
+        alert("Error calculating marks. Please try again.");
+        return;
+    }
+
     setDoc(doc(db, "students", user.uid), { marks })
         .then(() => {
             logEvent(analytics, 'exam_submitted', { marks: marks });
             // Display marks to the student
             if (marksDisplay) {
-                marksDisplay.textContent = `Your Marks: ${marks}/3`;
+                marksDisplay.textContent = `Your Marks: ${marks}/25`;
             }
             // Hide the exam form
             if (examForm) {
@@ -141,7 +148,13 @@ if (marksTable) {
 
             querySnapshot.forEach((doc) => {
                 const row = document.createElement("tr");
-                row.innerHTML = `<td>${doc.id}</td><td>${doc.data().marks}</td>`;
+                const marks = doc.data().marks;
+                // Ensure marks is a valid number
+                if (typeof marks === 'number' && !isNaN(marks)) {
+                    row.innerHTML = `<td>${doc.id}</td><td>${marks}</td>`;
+                } else {
+                    row.innerHTML = `<td>${doc.id}</td><td>Invalid Marks</td>`;
+                }
                 marksTable.appendChild(row);
             });
         })
