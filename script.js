@@ -4,38 +4,11 @@ import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/1
 import { doc, setDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
 import { logEvent } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-analytics.js";
 
-// ==================== Login Form Submission ====================
-const loginForm = document.getElementById("login-form");
-const loginError = document.getElementById("login-error");
-const loginLoading = document.getElementById("login-loading");
-
-if (loginForm) {
-    loginForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const email = document.getElementById("student-id").value;
-        const password = document.getElementById("password").value;
-
-        loginError.textContent = ""; // Clear previous errors
-        loginLoading.classList.add("show"); // Show loading indicator
-
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                console.log("Login successful", userCredential);
-                loginLoading.classList.remove("show");
-                logEvent(analytics, 'login', { method: 'email/password' });
-                window.location.href = "exam.html";
-            })
-            .catch((error) => {
-                console.error("Login failed:", error.code, error.message);
-                loginLoading.classList.remove("show");
-                loginError.textContent = "Login failed: " + error.message;
-            });
-    });
-}
+console.log("Firebase modules imported successfully.");
 
 // ==================== Timer (Set for 25 minutes) ====================
 if (document.getElementById("timer")) {
+    console.log("Timer initialized.");
     let timeLeft = 1500; // 25 minutes in seconds
     const timer = setInterval(() => {
         timeLeft--;
@@ -44,6 +17,7 @@ if (document.getElementById("timer")) {
         document.getElementById("time").textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
         if (timeLeft <= 0) {
             clearInterval(timer);
+            console.log("Time's up! Submitting exam...");
             submitExam();
         }
     }, 1000);
@@ -52,8 +26,10 @@ if (document.getElementById("timer")) {
 // ==================== Submit Exam Function ====================
 const examForm = document.getElementById("exam-form");
 if (examForm) {
+    console.log("Exam form found.");
     examForm.addEventListener("submit", function (e) {
         e.preventDefault();
+        console.log("Exam form submitted.");
         submitExam();
     });
 }
@@ -64,6 +40,7 @@ const correctAnswers = {
 };
 
 function calculateMarks() {
+    console.log("Calculating marks...");
     let totalMarks = 0;
     const answers = document.querySelectorAll('input[type="radio"]:checked');
     const studentAnswers = {};
@@ -80,12 +57,15 @@ function calculateMarks() {
         }
     }
 
+    console.log("Total Marks:", totalMarks);
     return totalMarks;
 }
 
 function submitExam() {
+    console.log("Submitting exam...");
     const user = auth.currentUser;
     if (!user) {
+        console.error("User not logged in.");
         alert("Please log in first!");
         return;
     }
@@ -119,33 +99,5 @@ function submitExam() {
         .catch((error) => {
             console.error("Error submitting exam:", error);
             alert("Error submitting exam: " + error.message);
-        });
-}
-
-// ==================== Admin: Fetch Marks ====================
-const marksTable = document.getElementById("marks-table");
-if (marksTable) {
-    getDocs(collection(db, "students"))
-        .then((querySnapshot) => {
-            if (querySnapshot.empty) {
-                marksTable.innerHTML = "<tr><td colspan='2'>No data available</td></tr>";
-                return;
-            }
-
-            querySnapshot.forEach((doc) => {
-                const row = document.createElement("tr");
-                const marks = doc.data().marks;
-
-                // Ensure marks is a valid number
-                if (typeof marks === 'number' && !isNaN(marks)) {
-                    row.innerHTML = `<td>${doc.id}</td><td>${marks}</td>`;
-                } else {
-                    row.innerHTML = `<td>${doc.id}</td><td>Invalid Marks</td>`;
-                }
-                marksTable.appendChild(row);
-            });
-        })
-        .catch((error) => {
-            console.error("Error fetching marks:", error);
         });
 }
