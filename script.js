@@ -1,7 +1,15 @@
-// Import Firebase modules
-import { auth, db } from "./firebase-config.js";
+import { auth } from "./firebase-config.js";
+
+// Example: Handling Login
+document.getElementById("login-btn").addEventListener("click", () => {
+  console.log("Login button clicked!");
+  console.log(auth); // Ensure auth is defined
+});
+
 import { signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 import { doc, setDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+
 
 // **Login Function**
 document.getElementById("login-form").addEventListener("submit", function (e) {
