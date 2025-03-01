@@ -1,5 +1,5 @@
 import { db, auth } from "./firebase-config.js";  
-console.log(db, auth); // Ensure they are properly imported
+console.log(db, auth); // Debug: Ensure Firebase is properly imported
 
 import { signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 import { doc, setDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
@@ -22,13 +22,11 @@ document.getElementById("login-form")?.addEventListener("submit", function (e) {
 });
 
 // **Timer (Set for 25 minutes)**
-let timeLeft = 1500; 
-const timerElement = document.getElementById("timer");
-
-if (timerElement) {
+if (document.getElementById("timer")) {
+    let timeLeft = 1500; 
     const timer = setInterval(() => {
         timeLeft--;
-        timerElement.innerText = `সময় বাকি: ${Math.floor(timeLeft / 60)} মিনিট ${timeLeft % 60} সেকেন্ড`;
+        document.getElementById("timer").innerText = `সময় বাকি: ${Math.floor(timeLeft / 60)} মিনিট ${timeLeft % 60} সেকেন্ড`;
         if (timeLeft <= 0) {
             clearInterval(timer);
             submitExam();
@@ -44,7 +42,12 @@ document.getElementById("exam-form")?.addEventListener("submit", function (e) {
 
 function calculateMarks() {
     let totalMarks = 0;
-    // TODO: Logic to calculate exam marks
+    const answers = document.querySelectorAll('input[type="radio"]:checked');
+
+    answers.forEach((answer) => {
+        totalMarks += parseInt(answer.value);  
+    });
+
     return totalMarks;
 }
 
@@ -71,6 +74,11 @@ const marksTable = document.getElementById("marks-table");
 if (marksTable) {
     getDocs(collection(db, "students"))
         .then((querySnapshot) => {
+            if (querySnapshot.empty) {
+                marksTable.innerHTML = "<tr><td colspan='2'>No data available</td></tr>";
+                return;
+            }
+
             querySnapshot.forEach((doc) => {
                 const row = document.createElement("tr");
                 row.innerHTML = `<td>${doc.id}</td><td>${doc.data().marks}</td>`;
