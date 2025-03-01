@@ -8,7 +8,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    color: #333;
+    color: white;
     overflow: hidden;
 }
 
@@ -17,71 +17,69 @@ body {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 40px;
+    padding: 30px;
     border-radius: 20px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    width: 350px;
+    width: 600px;
     text-align: center;
-    animation: fadeIn 0.8s ease-in-out, float 4s infinite ease-in-out;
+    animation: fadeIn 0.8s ease-in-out;
 }
 
-/* Floating Animation */
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-/* Heading Styling */
-h1 {
+/* Timer Styling */
+#timer {
+    font-size: 1.2em;
+    font-weight: bold;
     margin-bottom: 20px;
-    font-size: 2.5em;
-    color: white;
+    color: #ffcc00;
+}
+
+/* Question Styling */
+ol {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+p {
+    font-size: 1.1em;
     font-weight: 600;
-    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
 }
 
-/* Form Styling */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-/* Input Fields */
-input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    font-size: 1em;
+/* Options Styling */
+label {
+    display: block;
+    padding: 10px;
     background: rgba(255, 255, 255, 0.1);
-    color: white;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
-input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
+label:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
 }
 
-input:focus {
-    border-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
-    outline: none;
+input[type="radio"] {
+    margin-right: 10px;
 }
 
 /* Button Styling */
 button {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
     color: white;
-    padding: 12px;
+    padding: 12px 24px;
     border: none;
     border-radius: 8px;
     font-size: 1em;
     cursor: pointer;
+    margin-top: 20px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -94,23 +92,15 @@ button:active {
     transform: translateY(0);
 }
 
-/* Error Message Styling */
-.error-message {
-    color: #ff6b6b;
-    font-size: 0.9em;
-    margin-top: 10px;
-    display: none;
+/* Marks Display Styling */
+#marks-display {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #00ff00;
+    margin-top: 20px;
 }
 
-/* Loading Indicator Styling */
-.loading-indicator {
-    color: white;
-    font-size: 0.9em;
-    margin-top: 10px;
-    display: none;
-}
-
-/* Fade-In Animation */
+/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -119,27 +109,5 @@ button:active {
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-/* Background Animation */
-body::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
-    animation: rotate 20s linear infinite;
-    z-index: -1;
-}
-
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
     }
 }
