@@ -1,25 +1,38 @@
+// Wait until Firebase is fully loaded
+if (window.auth && window.db) {
+    console.log("Firebase initialized successfully.");
+} else {
+    console.error("Firebase not initialized. Check firebase-config.js.");
+}
+
+// Example of using auth and db:
+
+
 import { db, auth } from "./firebase-config.js";  
 console.log(db, auth); // Debug: Ensure Firebase is properly imported
 
-import { signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
-import { doc, setDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+import { doc, setDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
-// **Login Function**
-document.getElementById("login-form")?.addEventListener("submit", function (e) {
+document.getElementById("login-form").addEventListener("submit", function (e) {
     e.preventDefault();
     
-    const email = document.getElementById("student-id").value;  
+    const email = document.getElementById("student-id").value;
     const password = document.getElementById("password").value;
 
-    signInWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(window.auth, email, password)
         .then((userCredential) => {
             alert("Login successful!");
-            window.location.href = "exam.html";
+            window.location.href = "exam.html"; // Redirect
         })
         .catch((error) => {
             alert("Login failed: " + error.message);
         });
 });
+
+
+
+
 
 // **Timer (Set for 25 minutes)**
 if (document.getElementById("timer")) {
