@@ -1,60 +1,311 @@
 <!DOCTYPE html>  
 <html lang="bn">  
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>পরীক্ষা</title> 
-    <style>
-        #marks-display {
-            font-size: 24px;
-            font-weight: bold;
-            color: green;
-            margin-top: 20px;
-        }
-    </style>
-</head>    
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>MCQ Exam</title>  
+    <style>  
+        body {  
+            font-family: Arial, sans-serif;  
+            background-color: #f4f4f4;  
+            margin: 0;  
+            padding: 20px;  
+        }  
+        h1 {  
+            text-align: center;  
+        }  
+        .question {  
+            background-color: white;  
+            padding: 15px;  
+            border-radius: 8px;  
+            margin-bottom: 20px;  
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  
+        }  
+        .options {  
+            margin-top: 10px;  
+        }  
+        .options label {  
+            display: block;  
+            margin-bottom: 8px;  
+        }  
+        img {  
+            max-width: 100%;  
+            height: auto;  
+        }  
+    </style>  
+</head>  
 <body>  
-    <h1>পরীক্ষার পৃষ্ঠা</h1>  
+
+<h1>MCQ Exam</h1>  
     <div id="timer">সময়: <span id="time">00:00</span></div>  
-    <form id="exam-form">  
-        <ol>  
-            <li>  
-                <p>১. পদার্থবিজ্ঞানে নিউটনের প্রথম সূত্র কী?</p>  
-                <label><input type="radio" name="q1" value="A"> A) একটি বস্তুর গতির পরিবর্তন তার উপর প্রয়োগিত বাহনের সমানুপাতিক।</label><br>  
-                <label><input type="radio" name="q1" value="B"> B) একটি বস্তুর অবস্থান পরিবর্তন না হলে, তার গতিও পরিবর্তন হয় না। </label><br>  
-                <label><input type="radio" name="q1" value="C"> C) একটি বস্তুর উপর বাহিনী প্রয়োগ করলে তার গতির পরিবর্তন হয়। </label><br>  
-                <label><input type="radio" name="q1" value="D"> D) পদার্থের অভ্যন্তরীণ শক্তি। </label>  
-            </li>  
-            <li>  
-                <p>২. একটি বস্তু যখন সমতল পথে চলে, তখন তার গতি কি ধরনের?</p>  
-                <label><input type="radio" name="q2" value="A"> A) স্থির</label><br>  
-                <label><input type="radio" name="q2" value="B"> B) সমান</label><br>  
-                <label><input type="radio" name="q2" value="C"> C) ত্বরণশীল</label><br>  
-                <label><input type="radio" name="q2" value="D"> D) অভিকর্ষিত</label>  
-            </li>  
-            <li>  
-                <p>৩. আলো একটি মাধ্যমের মধ্যে দিয়ে যায়, তখন তার গতি কি হয়?</p>  
-                <label><input type="radio" name="q3" value="A"> A) বাড়ে</label><br>  
-                <label><input type="radio" name="q3" value="B"> B) কমে</label><br>  
-                <label><input type="radio" name="q3" value="C"> C) অপরিবর্তিত থাকে</label><br>  
-                <label><input type="radio" name="q3" value="D"> D) বিপরীত দিকে চলে যায়</label>  
-            </li>  
-            <li>  
-                <p>৪. শক্তির সংরক্ষণ আইন কি নির্দেশ করে?</p>  
-                <label><input type="radio" name="q4" value="A"> A) শক্তি কখনও তৈরি হয় না বা ধ্বংস হয় না।</label><br>  
-                <label><input type="radio" name="q4" value="B"> B) শক্তি সবসময় ধ্বংস হয়।</label><br>  
-                <label><input type="radio" name="q4" value="C"> C) শক্তি সবসময় বৃদ্ধি পায়।</label><br>  
-                <label><input type="radio" name="q4" value="D"> D) শক্তি স্থানান্তরিত হয়।</label>  
-            </li>  
-            <li>  
-                <p>৫. বিদ্যুৎ প্রবাহের একক কি?</p>  
-                <label><input type="radio" name="q5" value="A"> A) ভোল্ট</label><br>  
-                <label><input type="radio" name="q5" value="B"> B) অ্যাম্পিয়ার</label><br>  
-                <label><input type="radio" name="q5" value="C"> C) ওহম</label><br>  
-                <label><input type="radio" name="q5" value="D"> D) জুল</label>  
-            </li>  
-        </ol>  
-        <button type="submit">পরীক্ষা জমা দিন</button> 
+    <form id="exam-form">
+            <div class="question">  
+                <p>১. কোনো গ্যাসের γ=3/2 হলে, উক্ত গ্যাসের জন্য কোনটি সঠিক?</p>  
+                <div class="options">  
+                    <label><input type="radio" name="q1"> C<sub>p</sub>=3R</label>  
+                    <label><input type="radio" name="q1"> C<sub>p</sub>=5R</label>  
+                    <label><input type="radio" name="q1"> C<sub>v</sub>=3R</label>  
+                    <label><input type="radio" name="q1"> C<sub>v</sub>=5R</label>  
+                </div>  
+            </div>  
+            
+            <div class="question">  
+                <p>২. সবচেয়ে বেশি চার্জ থাকে চার্জিত বস্তুর?</p>  
+                <div class="options">  
+                    <label><input type="radio" name="q2"> কেন্দ্রে</label>  
+                    <label><input type="radio" name="q2"> অবতল তলে</label>  
+                    <label><input type="radio" name="q2"> সমতল তলে</label>  
+                    <label><input type="radio" name="q2"> উত্তল তলে</label>  
+                </div>  
+            </div>  
+            
+            <div class="question">  
+                <p>৩. চার্জিত গোলকের ক্ষেত্রে তড়িৎ বিভব (V) ও কেন্দ্র হতে দুরত্ব (r) এর মধ্যে কোন লেখচিত্রটি সঠিক?</p>  
+                <img src="images/Screenshot 2025-03-04 054540.png" alt="Graph 1">  
+                <img src="images/Screenshot 2025-03-04 054548.png" alt="Graph 2">  
+                <img src="images/Screenshot 2025-03-04 054555.png" alt="Graph 3">  
+                <img src="images/Screenshot 2025-03-04 054603.png" alt="Graph 4">  
+            </div>  
+            
+            <div class="question">  
+                <p>৪. নিচের ফটোইলেক্ট্রন ক্রিয়ায় লেখচিত্রের ঢালকে কী দ্বারা প্রকাশ করা যায়?</p>  
+                <img src="images/Screenshot 2025-03-04 054459.png" alt="Graph">  
+                <div class="options">  
+                    <label><input type="radio" name="q4"> নিবৃত্তি বিভব</label>  
+                    <label><input type="radio" name="q4"> কার্জাপেক্ষক</label>  
+                    <label><input type="radio" name="q4"> তরঙ্গদৈর্ঘ্য</label>  
+                    <label><input type="radio" name="q4"> প্ল্যাঙ্ক ধ্রুবক</label>  
+                </div>  
+            </div>  
+            
+            <div class="question">  
+                <p>৫. একটি চার্জিত সমতল পরিবাহীর সন্নিক্টে তড়িৎ ক্ষেত্রের প্রাবল্যের মান কোনোটি?</p>  
+                <div class="options">  
+                    <label><input type="radio" name="q5"> E = σ/2ε<sub>0</sub></label>  
+                    <label><input type="radio" name="q5"> E = σ/ε<sub>0</sub></label>  
+                    <label><input type="radio" name="q5"> E = 2σ/ε<sub>0</sub></label>  
+                    <label><input type="radio" name="q5"> E = 3σ/2ε<sub>0</sub></label>  
+                </div>  
+            </div>  
+            
+            <div class="question">  
+                <p>৬. 5 ohm রোধের একটি তারকে টেনে 4 গুণ লম্বা করলে তারটির বর্তমান রোধ কত?</p>  
+                <div class="options">  
+                    <label><input type="radio" name="q6"> ৮০ ওহম</label>  
+                    <label><input type="radio" name="q6"> ২০ ওহম</label>  
+                    <label><input type="radio" name="q6"> ৪০ ওহম</label>  
+                    <label><input type="radio" name="q6"> ৯ ওহম</label>  
+                </div>  
+            </div>  
+            
+            <div class="question">  
+                <p>৭. কোনো একটি বস্তু আলোর বেগে ধাবিত হলে তার ভর কত?</p>  
+                <div class="options">  
+                    <label><input type="radio" name="q7"> শূন্য</label>  
+                    <label><input type="radio" name="q7"> অপরিবর্তিত</label>  
+                    <label><input type="radio" name="q7"> অসীম</label>  
+                    <label><input type="radio" name="q7"> আলোর বেগের সমান</label>  
+                </div>  
+            </div>  
+            
+            <div class="question">  
+                <p>৮. দুটি সরু চিড় পরস্পর হতে 4mm দূরে অবস্থিত। এ ব্যবস্থাকে 5890 অ্যানস্ট্রম তরঙ্গদৈর্ঘ্যের আলোক দ্বারা আলোকিত করা হলে 0.8 m দূরে অবস্থিত পর্দায় উজ্জ্বল ও অন্ধকার ডোরার সৃষ্টি হলো। পর্দায় সৃষ্ট ডোরার প্রস্থ কত?</p>  
+                <div class="options">  
+                    <label><input type="radio" name="q8"> 0.0589 mm</label>  
+                    <label><input type="radio" name="q8"> 0.890 mm</label>  
+                    <label><input type="radio" name="q8"> 0.1178 mm</label>  
+                    <label><input type="radio" name="q8"> 178 mm</label>  
+                </div>  
+            </div>  
+            
+            <div class="question">  
+                <p>৯. কেন্দ্রীয় চরম থেকে 0.047 cm দূরে কত ক্রমের উজ্জ্বল ডোরা পাওয়া যায়?</p>  
+                <div class="options">  
+                    <label><input type="radio" name="q9"> প্রথম</label>  
+                    <label><input type="radio" name="q9"> দ্বিতীয়</label>  
+                    <label><input type="radio" name="q9"> তৃতীয়</label>  
+                    <label><input type="radio" name="q9"> চতুর্থ</label>  
+                </div>  
+            </div>  
+            
+            <div class="question">  
+                <p>১০. নিচের কোনটি একটি ফোটন কণার E-λ গ্রাফ?</p>  
+                 <div class="options">  
+                    <label><input type="radio" name="q10"><img src="images/Screenshot 2025-03-04 070411.png" alt="Graph 1"></label>   
+                    <label><input type="radio" name="q10"><img src="images/Screenshot 2025-03-04 070418.png" alt="Graph 2"></label>  
+                    <label><input type="radio" name="q10"><img src="images/Screenshot 2025-03-04 070424.png" alt="Graph 3"></label>  
+                    <label><input type="radio" name="q10"> <img src="images/Screenshot 2025-03-04 070429.png" alt="Graph 4"></label>  
+            </div>  
+            
+            <div class="question">  
+                <p>১১. তেজস্ক্রিয় কণা বা রশ্মিগুলোর ভেদন ক্ষমতা বিবেচনায় নিচের কোনটি সঠিক?</p>  
+                <div class="options">  
+                    <label><input type="radio" name="q11"> γ-রশ্মি > β -কণা > -কণা</label>  
+                    <label><input type="radio" name="q11"> α -কণা > β -কণা > γ-রশ্মি</label>  
+                    <label><input type="radio" name="q11"> γ-রশ্মি > α -কণা > β -কণা</label>  
+                    <label><input type="radio" name="q11"> β -কণা > α -কণা > γ-রশ্মি</label>  
+                </div>  
+            </div>  
+            
+            <div class="question">  
+                <p>১২. নিউটনের ফিউশন-<br>  
+                    i. একাধিক হালকা নিউক্লিয়াস একত্রিত হয়ে ভারি নিউক্লিয়াস গঠন করে<br>  
+                    ii. অত্যধিক উচ্চ তাপমাত্রায় সংঘটিত হয়<br>  
+                    iii. আণবিক চুল্লিতে এই প্রক্রিয়া সংঘটিত হয়<br>  
+                    নিচের কোনটি সঠিক?</p>  
+                <div class="options">  
+                    <label><input type="radio" name="q12"> i ও ii</label>  
+                    <label><input type="radio" name="q12"> i ও iii</label>  
+                    <label><input type="radio" name="q12"> ii ও iii</label>  
+                    <label><input type="radio" name="q12"> I, ii ও iii</label>  
+                </div>  
+            </div>  
+            
+            <div class="question">  
+                <p>১৩. 60W-220V এবং 60 W-110 V লেখা বাল্ব দুটির রোধের অনুপাত কত?</p>  
+                <div class="options">  
+                    <label><input type="radio" name="q13"> 4:1</label>  
+                    <label><input type="radio" name="q13"> 1:4</label>  
+                    <label><input type="radio" name="q13"> 2:1</label>  
+                    <label><input type="radio" name="q13"> 1:1</label>  
+                </div>  
+            </div>  
+            
+            <div class="question">  
+                <p>১৪. আপেক্ষিক তত্ত্বের ক্ষেত্রে-<br>  
+                    i. চলমান ঘড়ি নিশ্চল ঘড়ি অপেক্ষা দ্রুত চলে<br>  
+                    ii. চলমান অবস্থায় কোনো বস্তুর দৈর্ঘ্য এর নিশ্চল দৈর্ঘ্য অপেক্ষা ছোট<br>  
+                    iii. গতিশীল কোনো বস্তুর ভর এর নিশ্চল ভর অপেক্ষা বেশি<br>  
+                    নিচের কোনটি সঠিক?</p>  
+                <div class="options">  
+                    <label><input type="radio" name="q14"> i ও ii</label>  
+                    <label><input type="radio" name="q14"> i ও iii</label>  
+                    <label><input type="radio" name="q14"> ii ও iii</label>  
+                    <label><input type="radio" name="q14"> I, ii ও iii</label>  
+                </div>  
+            </div>  
+            
+            <div class="question">  
+                <p>১৫. শরীরের ব্যথা-বেদনা উপশমে নিচের কোন রশ্মিটি ব্যবহৃত হয়?</p>  
+                <div class="options">  
+                    <label><input type="radio" name="q15"> এক্স রশ্মি</label>  
+                    <label><input type="radio" name="q15"> অবলোহিত রশ্মি</label>  
+                    <label><input type="radio" name="q15"> অতিবেগুনী রশ্মি</label>  
+                    <label><input type="radio" name="q15"> গামা রশ্মি</label>  
+                </div>  
+            </div>  
+            
+            <div class="question">  
+                <div class="question">  
+                <p>১৬. পয়েন্টিং ভেক্টর হলো-</p>  
+                <div class="options">  
+                    <label><input type="radio" name="q16"> **E × H**</label>  
+                    <label><input type="radio" name="q16"> **H × E**</label>  
+                    <label><input type="radio" name="q16"> **\(\mathbf{E} \cdot \mathbf{H}\)**</label>  
+                    <label><input type="radio" name="q16"> **\(\mathbf{H} \cdot \mathbf{E}\)**</label>  
+                </div>   
+            </div>
+            <div class="question">  
+                <p>১৭. একটি তাপীয় ইঞ্জিন 27 °C ও 227 °C তাপমাত্রার মধ্যে কার্যরত আছে। পরবর্তীতে উৎসের ও গ্রাহকের তাপমাত্রা 20 °C যথাক্রমে বৃদ্ধি ও হ্রাস করা হলো। তাপমাত্রা পরিবর্তনের পূর্বে ইঞ্জিনের দক্ষতা কত?</p>  
+                <div class="options">  
+                    <label><input type="radio" name="q1"> 33.33%</label>  
+                    <label><input type="radio" name="q1"> 40%</label>  
+                    <label><input type="radio" name="q1"> 46%</label>  
+                    <label><input type="radio" name="q1"> 66.67%</label>  
+                </div>  
+            </div>  
+            
+            <div class="question">  
+                <p>১৮. তাপমাত্রা পরিবর্তন করার ক্ষেত্রে-<br>  
+                    i. উৎসের তাপমাত্রা বৃদ্ধি করায় ইঞ্জিনের দক্ষতা বাড়ে<br>  
+                    ii. গ্রাহকের তাপমাত্রা হ্রাস করায় ইঞ্জিনের দক্ষতা বাড়ে<br>  
+                    iii. উভয়ক্ষেত্রে ইঞ্জিন দ্বারা কৃতকাজ সমান নয়<br>  
+                    নিচের কোনটি সঠিক?</p>  
+                <div class="options">  
+                    <label><input type="radio" name="q18"> i ও ii</label>  
+                    <label><input type="radio" name="q18"> i ও iii</label>  
+                    <label><input type="radio" name="q18"> ii ও iii</label>  
+                    <label><input type="radio" name="q18"> I, ii ও iii</label>  
+                </div>  
+            </div>  
+            
+            <div class="question">  
+                <p>১৯. বর্তনীর তুল্য রোধ কত?</p>
+                <img src="images/Screenshot 2025-03-04 071620.png" alt="Graph">
+                <div class="options">  
+                    <label><input type="radio" name="q19"> 3.33 Ω</label>  
+                    <label><input type="radio" name="q19"> 0.75 Ω</label>  
+                    <label><input type="radio" name="q19"> 1.33 Ω</label>  
+                    <label><input type="radio" name="q19"> 0.33 Ω</label>  
+                </div>  
+            </div>  
+            
+            <div class="question">  
+                <p>২০. বর্তনীর শাখা প্রবাহগুলোর মধ্যে সম্পর্ক-<br>  
+                    i. I<sub>AB</sub> > I<sub>CD</sub><br>  
+                    ii. I<sub>AB</sub> < I<sub>CD</sub><br>  
+                    iii. I<sub>PQ</sub> = I<sub>QE</sub><br>  
+                    নিচের কোনটি সঠিক?</p>  
+                <div class="options">  
+                    <label><input type="radio" name="q20"> i ও ii</label>  
+                    <label><input type="radio" name="q20"> i ও iii</label>  
+                    <label><input type="radio" name="q20"> ii ও iii</label>  
+                    <label><input type="radio" name="q20"> I, ii ও iii</label>  
+                </div>   
+            </div>  
+            
+            <div class="question">  
+                <p>২১. দুটি কোষের শ্রেণিসমবায়ের ক্ষেত্রে প্রবাহমাত্রার সূত্র কোনটি?</p>  
+                <div class="options">  
+                    <label><input type="radio" name="q21"> I<sub>s</sub> = 2E/(r + 2R)</label>  
+                    <label><input type="radio" name="q21"> I<sub>s</sub> = 3E/(2r + R)</label>  
+                    <label><input type="radio" name="q21"> I<sub>s</sub> = E/(r + 2R)</label>  
+                    <label><input type="radio" name="q21"> I<sub>s</sub> = E/(2r + R)</label>  
+                </div>  
+            </div>  
+            
+            <div class="question">  
+                <p>২২. Closed integral(E.dS) = q/ε<sub>0</sub> এটি কোন সূত্র?</p>  
+                <div class="options">  
+                    <label><input type="radio" name="q22"> অ্যাম্পিয়ারের সূত্র</label>  
+                    <label><input type="radio" name="q22"> গাউসের সূত্র</label>  
+                    <label><input type="radio" name="q22"> বায়োট, সাভার্টের সূত্র</label>  
+                    <label><input type="radio" name="q22"> ফ্যারাডের সূত্র</label>  
+                </div>  
+            </div>  
+            
+            <div class="question">  
+                <p>২৩. একটি তরঙ্গের দুটি বিন্দুর মধ্যে দশা পার্থক্য π/2 বিন্দুদ্বয়ের মধ্যে পথ পার্থক্য কত?</p>  
+                <div class="options">  
+                    <label><input type="radio" name="q23"> λ/2</label>  
+                    <label><input type="radio" name="q23"> λ/4</label>  
+                    <label><input type="radio" name="q23"> λ/8</label>  
+                    <label><input type="radio" name="q23"> λ/16</label>  
+                </div>  
+            </div>  
+            
+            <div class="question">  
+                <p>২৪. নিচের চিত্রে কার্বন ডাইঅক্সাইড গ্যাসের ক্ষেত্রে, লেখ (i) এর চেয়ে লেখ (ii) কতগুণ খাড়া?</p>  
+                <img src="images/Screenshot 2025-03-04 072340.png" alt="Graph">  
+                <div class="options">  
+                    <label><input type="radio" name="q24"> 1.33</label>  
+                    <label><input type="radio" name="q24"> 1.41</label>  
+                    <label><input type="radio" name="q24"> 1.50</label>  
+                    <label><input type="radio" name="q24"> 1.67</label>  
+                </div>  
+            </div>  
+            
+            <div class="question">  
+                <p>২৫. 5 kg পানিকে 0 °C থেকে 20 °C এ উত্তপ্ত করা হলো, এনট্রপির পরিবর্তন বের কর?</p>  
+                <div class="options">  
+                    <label><input type="radio" name="q25"> 1200 J/K</label>
+                    <label><input type="radio" name="q25"> 1484.71 J/K</label>  
+                    <label><input type="radio" name="q25"> 890 J/K</label>  
+                    <label><input type="radio" name="q25"> 1260 J/K</label>  
+                </div>  
+            </div>  
+      
+        <button type="submit" style="margin-top: 20px;">জমা দিন</button>  
     </form>   
     <div id="marks-display"></div>
     <script type="module" src="script.js"></script>
