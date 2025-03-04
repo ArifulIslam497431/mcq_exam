@@ -58,7 +58,13 @@ if (examForm) {
 
 // Define the correct answers
 const correctAnswers = {
-    q1: "A", q2: "C", q3: "B", q4: "A", q5: "D",
+    q1: "A", q2: "D", q3: "B", q4: "D", q5: "A",
+q6: "A", q7: "C", q8: "A", q9: "D", q10: "D",
+q11: "A", q12: "A", q13: "A", q14: "D", q15: "B",
+q16: "A", q17: "B", q18: "D", q19: "A", q20: "C",
+q21: "B", q22: "B", q23: "B", q24: "B", q25:"B",
+
+
 };
 
 function calculateMarks() {
