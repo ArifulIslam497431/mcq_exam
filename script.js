@@ -119,7 +119,9 @@ function submitExam() {
 
             // Display marks to the student
             if (marksDisplay) {
-                marksDisplay.textContent = `Your Marks: ${marks}/25`;
+                marksDisplay.innerHTML = `<h2 style="color: #2196F3; padding: 20px; border: 2px solid; margin-top: 20px;">
+                            আপনার প্রাপ্ত নম্বর: ${marks}/25
+                         </h2>`;
             }
 
             // Hide the exam form
