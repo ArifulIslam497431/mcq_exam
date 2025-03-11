@@ -67,6 +67,7 @@ q21: "B", q22: "A", q23: "D", q24: "B", q25:"B",
 
 };
 
+
 function calculateMarks() {
     let totalMarks = 0;
     const answers = document.querySelectorAll('input[type="radio"]:checked');
@@ -77,15 +78,9 @@ function calculateMarks() {
         studentAnswers[answer.name] = answer.value;
     });
 
-    // Ensure we handle cases where no answers are selected
-    if (Object.keys(studentAnswers).length === 0) {
-        console.warn("No answers selected. Returning 0 marks.");
-        return 0; // Return 0 instead of NaN
-    }
-
     // Compare student's answers with correct answers
     for (const question in correctAnswers) {
-        if (studentAnswers[question] === correctAnswers[question]) {
+        if (studentAnswers[question] && studentAnswers[question] === correctAnswers[question]) {
             totalMarks++;
         }
     }
@@ -93,7 +88,6 @@ function calculateMarks() {
     console.log("Total Marks Calculated:", totalMarks);
     return totalMarks;
 }
-
 function submitExam() {
     const user = auth.currentUser;
     if (!user) {
