@@ -37,7 +37,11 @@
 <body>  
 
 <h1>Math MCQ Exam</h1>  
-    <div id="timer">সময়: <span id="time">25:00</span></div>  
+    <div id="timer">সময়: <span id="time">25:00</span></div>
+                <div id="timer" style="text-align: center; font-size: 1.2em; padding: 10px;">
+        </div>
+
+
     <form id="exam-form">
             <div class="question">
                 <p>১. A = \(\begin{bmatrix} 4 & 1 \\ 3 & M \end{bmatrix}\) M এর মান কত হলে A মেট্রিক্স এর ট্রেস  5 হবে?</p>
@@ -304,10 +308,11 @@
                     <label><input type="radio" name="q25" value="C"> \(\ln|\sec(x)|\)</label>
                     <label><input type="radio" name="q25" value="D"> \(\ln|\tan^2 x|\)</label>
                 </div>
-            </div>  
+            </div> 
         <button type="submit">জমা দিন</button>  
     </form>   
-    <div id="marks-display"></div>
+        <div id="marks-display" style="text-align: center;">
+        </div>
     <script type="module" src="script.js"></script>
 </body>
     </html>
