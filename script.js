@@ -4,6 +4,13 @@ import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/1
 import { doc, setDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
 import { logEvent } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-analytics.js";
 
+// ==================== Prevent Accidental Refresh ====================
+window.onbeforeunload = function(event) {
+    return "Are you sure you want to refresh the page? Your exam progress might be lost.";
+};
+
+// ==================== Login Form Submission ====================
+// ... (rest of your login form code - no changes here) ...
 // ==================== Login Form Submission ====================
 const loginForm = document.getElementById("login-form");
 const loginError = document.getElementById("login-error");
@@ -39,7 +46,7 @@ if (document.getElementById("timer")) {
     let timeLeft = 1500; // 25 minutes in seconds
     const timer = setInterval(() => {
         timeLeft--;
-        document.getElementById("timer").innerText = `সময় বাকি: ${Math.floor(timeLeft / 60)} মিনিট ${timeLeft % 60} সেকেন্ড`;
+        document.getElementById("timer").innerText = `সময় বাকি: ${Math.floor(timeLeft / 60)} মিনিট ${timeLeft % 60} সেকেন্ড`;
         if (timeLeft <= 0) {
             clearInterval(timer);
             submitExam();
@@ -59,14 +66,11 @@ if (examForm) {
 // Define the correct answers
 const correctAnswers = {
     q1: "A", q2: "D", q3: "A", q4: "C", q5: "A",
-q6: "A", q7: "B", q8: "C", q9: "D", q10: "A",
-q11: "A", q12: "B", q13: "B", q14: "B", q15: "B",
-q16: "D", q17: "D", q18: "A", q19: "C", q20: "B",
-q21: "B", q22: "A", q23: "D", q24: "B", q25:"B",
-
-
+    q6: "A", q7: "B", q8: "C", q9: "D", q10: "A",
+    q11: "A", q12: "B", q13: "B", q14: "B", q15: "B",
+    q16: "D", q17: "D", q18: "A", q19: "C", q20: "B",
+    q21: "B", q22: "A", q23: "D", q24: "B", q25:"B",
 };
-
 
 function calculateMarks() {
     let totalMarks = 0;
@@ -78,9 +82,15 @@ function calculateMarks() {
         studentAnswers[answer.name] = answer.value;
     });
 
+    // Ensure we handle cases where no answers are selected
+    if (Object.keys(studentAnswers).length === 0) {
+        console.warn("No answers selected. Returning 0 marks.");
+        return 0; // Return 0 instead of NaN
+    }
+
     // Compare student's answers with correct answers
     for (const question in correctAnswers) {
-        if (studentAnswers[question] && studentAnswers[question] === correctAnswers[question]) {
+        if (studentAnswers[question] === correctAnswers[question]) {
             totalMarks++;
         }
     }
@@ -88,6 +98,7 @@ function calculateMarks() {
     console.log("Total Marks Calculated:", totalMarks);
     return totalMarks;
 }
+
 function submitExam() {
     const user = auth.currentUser;
     if (!user) {
@@ -114,13 +125,13 @@ function submitExam() {
             // Display marks to the student
             if (marksDisplay) {
                 marksDisplay.innerHTML = `<h2 style="color: #2196F3; padding: 20px; border: 2px solid; margin-top: 20px;">
-                            আপনার প্রাপ্ত নম্বর: ${marks}/25
-                         </h2>`;
+                                            আপনার প্রাপ্ত নম্বর: ${marks}/25
+                                         </h2>`;
             }
 
             // Hide the exam form
             if (examForm) {
-                examForm.style.display = "none";
+                examForm.style.display = "none"; // Changed to "none" to just hide it
             }
         })
         .catch((error) => {
@@ -140,7 +151,7 @@ if (marksTable) {
             }
 
             querySnapshot.forEach((doc) => {
-                const row = document.createElement("tr");
+                         const row = document.createElement("tr");
                 const marks = doc.data().marks;
 
                 // Ensure marks is a valid number
